@@ -1,0 +1,3 @@
+<DnaLibrary Description="PackLib Test Add-In" Language="CS">
+	<ExternalLibrary Path="ExcelDNA_Ribbons2.dll" Pack="true" />
+</DnaLibrary>

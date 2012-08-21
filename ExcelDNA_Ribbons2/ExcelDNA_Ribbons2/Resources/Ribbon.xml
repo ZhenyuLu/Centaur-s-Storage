@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns='http://schemas.microsoft.com/office/2006/01/customui'>
+  <ribbon>
+    <tabs>
+      <tab id='Tab1' label='EManager FR 4'>
+        <group id='Groupx1' label='Log'>
+          <button id='EFRViewLogFiles' label='View Files' getImage='GetRibbonControlImage' size='large' onAction='OnButtonPressed'/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

@@ -1,0 +1,7 @@
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\bin\Debug\ExcelDNA_Ribbons2.dll
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\bin\Debug\ExcelDNA_Ribbons2.pdb
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\obj\Debug\ResolveAssemblyReference.cache
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\obj\Debug\ExcelDNA_Ribbons2.Resources.resources
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\obj\Debug\ExcelDNA_Ribbons2.csproj.GenerateResource.Cache
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\obj\Debug\ExcelDNA_Ribbons2.dll
+E:\code\C# Project\Office\ExcelDNA_Ribbons2\ExcelDNA_Ribbons2\obj\Debug\ExcelDNA_Ribbons2.pdb
