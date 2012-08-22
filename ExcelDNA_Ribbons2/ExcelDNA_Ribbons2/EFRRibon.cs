@@ -16,7 +16,7 @@ namespace ExcelDNA_Ribbons2
     {
         public override string GetCustomUI(string uiName)
         {
-            System.Windows.Forms.MessageBox.Show("HEY");
+            System.Windows.Forms.MessageBox.Show("EFRRibon Loading...", "Information",MessageBoxButtons.OK, MessageBoxIcon.Information);
             XmlDocument doc = new XmlDocument();
             doc.Load(Assembly.GetExecutingAssembly().GetManifestResourceStream("ExcelDNA_Ribbons2.Resources.Ribbon.xml"));
             return doc.InnerXml;
@@ -24,12 +24,23 @@ namespace ExcelDNA_Ribbons2
 
         public void OnButtonPressed(IRibbonControl control)
         {
-            MessageBox.Show("This is a test.","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            Excel.Application app = (Excel.Application)ExcelDna.Integration.ExcelDnaUtil.Application;
+            Excel.Range selection = (Excel.Range)app.Selection;
+            if (selection == null)
+            {
+                MessageBox.Show("No data has been selected.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Total "+selection.Cells.Count.ToString()+" cells selected " + 
+                                                " with "+selection.Rows.Count.ToString() +" rows " + 
+                                                "and "+selection.Columns.Count.ToString() + " columns.","Information",
+                                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public System.Drawing.Image GetRibbonControlImage(IRibbonControl control)
         {
-            MessageBox.Show("GetRibbonControlImage");
             return ExcelDNA_Ribbons2.Resources.brymck_48;
         }
     }
