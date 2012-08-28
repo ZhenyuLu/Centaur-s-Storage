@@ -55,53 +55,50 @@ namespace ExcelDNA_Ribbons2
         public DataTable StoreRange2DataTable(Excel.Range range, bool firstRowHeader)
         {
             DataTable dt = new DataTable();
-            if (firstRowHeader)
+            object[,] temp = (object[,])range.Cells.Value2;
+            int rowCount = range.Rows.Count;
+            int colCount = range.Columns.Count;
+
+            try
             {
-                try
+                if (firstRowHeader)
                 {
-                    for (int i = 0; i < range.Columns.Count; i++)
+                    for (int i = 1; i <= colCount; i++)
                     {
-                        dt.Columns.Add(range.Cells[0, i].ToString());
+                        dt.Columns.Add(temp[1,i].ToString());
                     }
-                    for (int i = 1; i < range.Rows.Count; i++)
+
+                    for (int i = 1; i <= rowCount; i++)
                     {
                         DataRow row = dt.NewRow();
-                        for (int j = 0; j < range.Columns.Count; j++)
+                        for (int j = 1; j <= colCount; j++)
                         {
-                            row[j] = range.Cells[i, j].ToString();
+                            row[j-1] = temp[i, j].ToString();
                         }
                         dt.Rows.Add(row);
                     }
                 }
-                catch (Exception e)
+                else
                 {
-                    MessageBox.Show("Unable to create the data because " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
+                    for (int i = 1; i <= colCount; i++)
+                    {
+                        dt.Columns.Add("var" + (i + 1).ToString());
+                    }
+                    for (int i = 1; i <= rowCount; i++)
+                    {
+                        DataRow row = dt.NewRow();
+                        for (int j = 1; j < colCount; j++)
+                        {
+                            row[j-1] = temp[i,j].ToString();
+                        }
+                        dt.Rows.Add(row);
+                    }
                 }
             }
-            else
+            catch (Exception e)
             {
-                try
-                {
-                    for (int i = 0; i < range.Columns.Count; i++)
-                    {
-                        dt.Columns.Add("var"+(i+1).ToString());
-                    }
-                    for (int i = 0; i < range.Rows.Count; i++)
-                    {
-                        DataRow row = dt.NewRow();
-                        for (int j = 0; j < range.Columns.Count; j++)
-                        {
-                            row[j] = range.Cells[i, j].ToString();
-                        }
-                        dt.Rows.Add(row);
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Unable to create the data because " + e.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    return null;
-                }
+                MessageBox.Show("Unable to pull the data out because " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
             return dt;
         }
